@@ -1,0 +1,64 @@
+# Transmic control file
+# Please only edit parameter values within double quotes.
+# ------------------------------------------------------
+# Clustering parameters
+
+# 1.Name of the tree file
+# (or absolute path if file not in same directory as the programm)
+#tree_file="RAxML_bipartitions_WithFP.BS_TREE"
+tree_file="/home/mi/yoocef/Dropbox/projects2016/SubtypA_Kirsten/pureA1_gtr_ucln_skygrid_treeannotator2.trees" 
+   
+# 2.Tree format (newick/nexus)
+tree_format = "nexus" 
+
+# 3.Node support (bootstrap/posterior)
+node_support = "posterior" 
+
+# 4.Cut-off value for the mean pairwise patristic distances (mppd) 
+# i.e. a clade is a transmission cluster if  mppd =< cutoff_mppd
+#type here one numeric value or a range between x and y in z-steps by typing x:z:y  
+#cutoff_mppd="0.001:0.0005:0.003"
+cutoff_mppd="10:10:100"
+
+# 5.Cut-off for the bootstrap support value (in percent)
+# i.e. a clade is a transmission cluster if  value >= cutoff_node_support
+#type here one numeric value or a range between x and y in z-steps by typing x:z:y 
+#cutoff_node_support="80:5:100"
+cutoff_node_support="95"
+
+# 6.Patient-wise clustering (true/false)
+# This option only works with sequence identifiers consisting
+# of a unique sequence ID followed by a patient ID separated by 
+# an underscore e.g. seqID_patID. In this case set it to true. 
+# In all other cases (e.g. simple sequence-based clustering) set this
+# option to false. 
+patWiseClust="false"
+
+# 7.Name of excel file with patient meta-information
+# The first column of this excel file must contain the sequence-IDs
+# of the taxa in the tree file. The following columns contain additional
+# information for each sequence. If
+# If no file with meta-information available, leave this empty: "". 
+#database_file="RKIdatabase.xls"
+database_file="" 
+
+# 8.Identifier of the outgroup sequence
+outgroupSeqId="SIVcpz_ant"
+#outgroupSeqId=""
+
+#---------------------------------------
+# Visualization
+#
+# 9. Figure showing distribution of patristic distances between taxa (true/false)
+# Set to true to generate a plot.
+figure_distances="true"
+
+# 10. Figure showing number of clusters  depending 
+# on distance and support thresholds (true/false)
+# Set to true to generate a plot.
+figure_nr_clusters="true"
+
+# 11. Figure showing mean size of clusters depending 
+# on distance and support thresholds (true/false)
+# Set to true to generate a plot.
+figure_sizeof_clusters="true"
