@@ -1,11 +1,11 @@
-# transmicBS.py
+# transmic.py
 #
 # A program for hierarchical clustering of genetic sequences
 # on phylogenetic trees. The code is customised for the identification of 
 # putative transmission clusters of viruses. In particular, it allows 
 # for multiple follow-up viral sequences extracted from the same individual.
 #
-# Kaveh Pouran Yousef, Silvana Gromoeller, 2015
+# Kaveh Pouran Yousef, Silvana Gromoeller, 2016
  
 from transmiclib import *
 
@@ -87,9 +87,6 @@ nr_leaves = len(taxon_labels)
 #Set pointer to the root-node
 start_node = tree.seed_node
 
-#determine significant nodes using the bootstrap edge labels
-#is_node_significant_raxml(start_node, bootstrap_cutoff)
-
 #generate output directories
 outdir1="text_out";
 if not os.path.exists(outdir1):
@@ -143,10 +140,7 @@ for support_cutoff in supportList:
         cluster_size_dist_mean_tmp.append(mean(array(map(len, clusters_meandist))))
         nr_clusters_tmp.append(len(clusters_meandist))
     cluster_size_dist_mean.append(array(cluster_size_dist_mean_tmp));
-    nr_clusters.append(array(nr_clusters_tmp));    
-        
-        
-        
+    nr_clusters.append(array(nr_clusters_tmp));                            
     sys.stdout.write('\n')
 
 print('Text-based clustering results written to directory:'), outdir1+"." 

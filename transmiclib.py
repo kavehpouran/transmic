@@ -1,9 +1,8 @@
-# LIBRARY OF TRANSMICBS FUNCTIONS
+# LIBRARY OF TRANSMIC FUNCTIONS
 
 from __future__ import with_statement
 import math
 import dendropy
-#from dendropy import treecalc %V3.12
 from dendropy import calculate
 import sys 
 import csv
@@ -109,14 +108,7 @@ def is_node_significant_raxml(node, bootstrap_cutoff):
     #support_of_downstream_subtree = []        
     for n in node.child_nodes():
         #support_of_downstream_subtree.append(is_node_significant_raxml(n, bootstrap_cutoff))
-        is_node_significant_raxml(n, bootstrap_cutoff)
-    #Algorithm:
-    #compare the taxa (leaves) of the node to the list of clades from the consensus tree
-    #and if the exact list of the taxa matches one of the clades from the consensus tree
-    #then check if the corresponding support value is greater-equal than the bootstrap cutoff. 
-    #If both queries are positive, recursively check if all these queries are also positive
-    #for all child nodes of the node in question. If the latter is true then mark the node in
-    #question as significant.
+        is_node_significant_raxml(n, bootstrap_cutoff)        
     tn_set=set(taxon_names(node))
     
     #the top-level node is always considered as significant
@@ -206,7 +198,7 @@ def get_average_length2(node, nrLeafsCluster):
   
 #Same as get_average_length2, but computes only inter-individual distances
 def get_average_length3(node, outgroupSeqId, pdm):
-  patIdList=[] #list of patIDs (the column seSKNr in the RKI table)	
+  patIdList=[] #list of patIDs 
   leaflist = node.leaf_nodes()
   patIDdict = dict()
   for i in range(len(leaflist)):  
@@ -301,7 +293,7 @@ def write_clusters_to_file(cluster_list1, filename, nr_seqs, patrDist_cutoff,  b
     print >> fobj, "This is an output file of TransmicBS.\n"
 	
     if len1 > 0:
-        print >> fobj, "Transmission clusters computed according to the distance  threshold of", patrDist_cutoff,"% and a bootstrap threshold of", bootstrap_cutoff,"%."
+        print >> fobj, "Transmission clusters computed according to the distance  threshold of", patrDist_cutoff,"% and a support threshold of", bootstrap_cutoff,"%."
         if nr_seqs > 0:
 			print >> fobj, "Number of sequences: ", nr_seqs
         print >> fobj, "Number of identified clusters: ", len1
@@ -315,7 +307,7 @@ def write_clusters_to_file(cluster_list1, filename, nr_seqs, patrDist_cutoff,  b
     for i in range(len1):
         print >> fobj,  str(i+1)+"."
         print >> fobj, "Mean value of pairwise patristic distances (%):", "{0:.4f}".format(cluster_list1[i][-2]*100)
-        print >> fobj, "Bootstrap support (%):", "{0:1.1f}".format(cluster_list1[i][-1]*100) 
+        print >> fobj, "Node support (%):", "{0:1.1f}".format(cluster_list1[i][-1]*100) 
         print >> fobj, cluster_list1[i][0:-2]
         print >> fobj, ""   
     fobj.close()

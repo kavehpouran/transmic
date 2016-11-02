@@ -20,8 +20,8 @@ node_support = "posterior"
 #cutoff_mppd="0.001:0.0005:0.003"
 cutoff_mppd="10:10:100"
 
-# 5.Cut-off for the bootstrap support value (in percent)
-# i.e. a clade is a transmission cluster if  value >= cutoff_node_support
+# 5.Cut-off for the node support value (bootstrap or posterior, in percent)
+# i.e. a clade is a transmission cluster if  support >= cutoff_node_support
 #type here one numeric value or a range between x and y in z-steps by typing x:z:y 
 #cutoff_node_support="80:5:100"
 cutoff_node_support="95"
@@ -53,7 +53,7 @@ outgroupSeqId="SIVcpz_ant"
 # Set to true to generate a plot.
 figure_distances="true"
 
-# 10. Figure showing number of clusters  depending 
+# 10. Figure showing number of clusters depending 
 # on distance and support thresholds (true/false)
 # Set to true to generate a plot.
 figure_nr_clusters="true"
