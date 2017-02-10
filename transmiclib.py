@@ -3,7 +3,6 @@
 from __future__ import with_statement
 import math
 import dendropy
-#from dendropy import treecalc %V3.12
 from dendropy import calculate
 import sys 
 import csv
@@ -59,7 +58,6 @@ def assess_node_support(node, cutoff, typeOfSupport):
         return node.support      
  
     #recursive function call
-    #support_of_downstream_subtree = []        
     for n in node.child_nodes():
         #support_of_downstream_subtree.append(is_node_significant_raxml(n, bootstrap_cutoff))
         assess_node_support(n, cutoff, typeOfSupport)
@@ -69,9 +67,6 @@ def assess_node_support(node, cutoff, typeOfSupport):
         support_val = 1
     else:
         if typeOfSupport=="bootstrap":
-            #print node
-            #print node.child_nodes()
-            #print node.is_leaf()    #---> include try-statement
             try:                    			
                 label_len = len(node.label)
             except TypeError:
@@ -365,7 +360,7 @@ def write_clusters_to_table(cluster_list1, RKIxls_infilename, xls_outfilename, t
 					#print idx
 					#print sheet_orig.row(idx[0]+1)
 					#print sheet_orig.row(idx[0]+1)[skipColumns:]
-					wr.writerow([i+1] + [idstr] + [cell.value.encode('utf8') if isinstance(cell.value, unicode) else cell.value for cell in sheet_orig.row(idx[0]+1)[skipColumns:] ]+ [mppd] + [bootstrap])
+					wr.writerow([i+1] + [idstr] + [cell.value.encode('utf8') if isinstance(cell.value, unicode) else cell.value for cell in sheet_orig.row(idx[0]+1)[skipColumns:] ]+ [mppd] + [support])
 					taxon_labels.remove(idstr)
                 	            
 	 # print out sequences not included in clusters 
