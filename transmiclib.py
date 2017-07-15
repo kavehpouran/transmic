@@ -335,7 +335,7 @@ def write_clusters_to_table(cluster_list1, RKIxls_infilename, xls_outfilename, t
 				idstr = cluster_list1[i][j]
 				#mppd and bootstrap value per cluster
 				mppd = cluster_list1[i][-2]
-				bootstrap = cluster_list1[i][-1]*100
+				support = cluster_list1[i][-1]*100
 				if not outgroupSeqId == idstr: 	# make sure it is not the the outgroup sequence
 					seq_id = idstr
 					#seq_id = __extractScountFromIdStr__(idstr)    #---------------------------- specific for the TC-prject pouranyousef et al. (required for the RKI excel files)   
