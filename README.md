@@ -1,4 +1,4 @@
-# Important!
+## Relocation notice
 
 This repo is not maintained here anymore has moved to another place. Please proceed to: https://github.com/KleistLab/TransMic
 
